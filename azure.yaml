@@ -3,6 +3,8 @@
 name: simple-fastapi-webapp
 metadata:
   template: simple-fastapi-webapp@0.0.1-beta
+infra:
+    provider: "bicep"
 services:
   web:
     project: src/
