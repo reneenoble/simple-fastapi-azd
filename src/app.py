@@ -1,14 +1,14 @@
-from flask import Flask, make_response
+from fastapi import FastAPI
+from fastapi.responses import PlainTextResponse
 import sys
 
-app = Flask(__name__)
+app = FastAPI()
 
-@app.route('/')
+@app.get("/")
 def index():
     version = sys.version_info
-    response = make_response(f"Hello World, I am Python {version.major}.{version.minor}", 200)
-    response.mimetype = "text/plain"
-    return response
+    return PlainTextResponse(content=f"Hello World, I am Python {version.major}.{version.minor}")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
