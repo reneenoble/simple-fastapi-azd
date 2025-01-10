@@ -8,5 +8,6 @@ infra:
 services:
   web:
     project: src/
-    language: py
+    language: python
     host: appservice
+    startCommand: gunicorn -k uvicorn.workers.UvicornWorker main:app --host 0.0.0.0 --port 8000
